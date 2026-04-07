@@ -12,7 +12,7 @@ st.set_page_config(
 # ── Load model ────────────────────────────────────────────────────────────────
 @st.cache_resource
 def load_model():
-    return joblib.load('rain_model_pipeline.pkl')
+    return joblib.load("rain_model_pipeline_v2.pkl")
 
 model = load_model()
 
