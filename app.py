@@ -37,7 +37,7 @@ st.markdown("""
     font-size: 14px; flex-shrink: 0;
 }
 .card-title {
-    font-size: 13px; font-weight: 700; #####
+    font-size: 15px; font-weight: 700; #####
     letter-spacing: 0.07em; text-transform: uppercase; opacity: 0.5; margin: 0;
 }
 .icon-blue   { background: #E6F1FB; }
@@ -217,7 +217,7 @@ hr_sign = "+" if humidity_rise >= 0 else ""
 st.write("")
 _, btn_col, _ = st.columns([1, 2, 1])
 with btn_col:
-    predict = st.button("🔮  Predict Rain Tomorrow", type="primary", use_container_width=True)
+    predict = st.button("Predict Rain Tomorrow", type="primary", use_container_width=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
 # RESULT — shown only after clicking Predict
@@ -288,9 +288,11 @@ if predict:
     # ── Right: prediction result panel ───────────────────────────────────────
     with right_col:
         st.markdown("##### 📊 Prediction Result")
-        st.caption(f"Station: {location}     Month: {MONTH_NAMES[month]}     Rain today: {rain_today_str}"
-                  
-                  )
+        st.caption(
+                f"Station: {location} &nbsp;&nbsp;&nbsp;&nbsp; "
+                f"Month: {MONTH_NAMES[month]} &nbsp;&nbsp;&nbsp;&nbsp; "
+                f"Rain today: {rain_today_str}"
+            )
 
         st.markdown(f"""
 <div class="result-panel" style="border-color: {accent_color}55;">
