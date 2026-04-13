@@ -9,169 +9,56 @@ st.set_page_config(
     layout="wide"
 )
 
-# ── Custom CSS ────────────────────────────────────────────────────────────────
+# ── Minimal CSS — only structural things Streamlit can't do natively ──────────
 st.markdown("""
 <style>
-/* ── Card shell ── */
-.card {
-    border: 1px solid rgba(128,128,128,0.2);
-    border-radius: 14px;
-    padding: 18px 20px 8px;
-    margin-bottom: 16px;
-}
+/* Slim the default top padding */
+.block-container { padding-top: 1.4rem; }
 
-/* ── Card header ── */
+/* Card shell used around each input group */
+.card {
+    border: 1px solid rgba(128,128,128,0.18);
+    border-radius: 14px;
+    padding: 16px 18px 4px;
+    margin-bottom: 4px;
+}
 .card-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(128,128,128,0.13);
+    gap: 9px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(128,128,128,0.12);
 }
-
 .card-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
 }
-
 .card-title {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    opacity: 0.55;
-    margin: 0;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.07em; text-transform: uppercase; opacity: 0.5; margin: 0;
 }
-
 .icon-blue   { background: #E6F1FB; }
 .icon-teal   { background: #E1F5EE; }
 .icon-amber  { background: #FAEEDA; }
 .icon-purple { background: #EEEDFE; }
 
-/* ── Insight panel ── */
-.insight-wrap {
-    display: flex;
-    justify-content: center;
-    margin: 8px 0 4px;
-}
-
-.insight-panel {
-    width: 100%;
-    max-width: 800px;
-    border: 1px solid rgba(128,128,128,0.18);
-    border-radius: 14px;
-    padding: 20px 24px 22px;
-}
-
-.insight-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.45;
-    margin-bottom: 14px;
-}
-
-.chips {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-
-.chip {
-    border-radius: 10px;
-    padding: 12px 14px;
-}
-
-.chip-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    opacity: 0.5;
-    margin-bottom: 4px;
-}
-
-.chip-val {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-}
-
-.chip-hint {
-    font-size: 11px;
-    opacity: 0.55;
-    margin-top: 2px;
-}
-
-.c-blue   { background:#E6F1FB; }  .c-blue   .chip-val { color:#0C447C; }
-.c-teal   { background:#E1F5EE; }  .c-teal   .chip-val { color:#085041; }
-.c-amber  { background:#FAEEDA; }  .c-amber  .chip-val { color:#633806; }
-.c-purple { background:#EEEDFE; }  .c-purple .chip-val { color:#3C3489; }
-.c-pink   { background:#FBEAF0; }  .c-pink   .chip-val { color:#72243E; }
-.c-gray   { background:#F1EFE8; }  .c-gray   .chip-val { color:#444441; }
-
-/* ── Result panel ── */
-.result-wrap {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
+/* Result panel border + layout */
 .result-panel {
-    width: 100%;
-    max-width: 680px;
     border-radius: 14px;
-    padding: 22px 28px;
+    padding: 20px 24px;
     border: 1px solid rgba(128,128,128,0.18);
 }
-
-.result-verdict {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-}
-
-.result-interp {
-    font-size: 13px;
-    opacity: 0.5;
-    margin-top: 4px;
-}
-
-.result-pct {
-    font-size: 38px;
-    font-weight: 700;
-    letter-spacing: -0.04em;
-}
-
-.prob-bar-track {
-    background: rgba(128,128,128,0.12);
-    border-radius: 6px;
-    height: 7px;
-    overflow: hidden;
-    margin: 18px 0 16px;
-}
-
-.prob-bar-fill {
-    height: 100%;
-    border-radius: 6px;
-}
-
+.result-verdict { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+.result-interp  { font-size: 13px; opacity: 0.5; margin-top: 3px; }
+.result-pct     { font-size: 36px; font-weight: 700; letter-spacing: -0.04em; }
+.prob-bar-track { background: rgba(128,128,128,0.12); border-radius: 6px; height: 7px; overflow: hidden; margin: 16px 0 14px; }
+.prob-bar-fill  { height: 100%; border-radius: 6px; }
 .tag {
-    display: inline-block;
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: rgba(128,128,128,0.09);
-    opacity: 0.75;
-    margin: 2px 4px 2px 0;
+    display: inline-block; font-size: 11px; padding: 3px 9px;
+    border-radius: 6px; background: rgba(128,128,128,0.09); opacity: 0.7; margin: 2px 3px 2px 0;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -179,14 +66,14 @@ st.markdown("""
 # ── Load model bundle ─────────────────────────────────────────────────────────
 @st.cache_resource
 def load_bundle():
-    return joblib.load("rain_model.pkl")
+    return joblib.load("rain_model_bundle.pkl")
 
 bundle    = load_bundle()
 pre_fit   = bundle["preprocessor"]
 model     = bundle["model"]
 threshold = bundle["threshold"]
 
-# ── Constants (exact feature lists from Cell 48 of notebook) ──────────────────
+# ── Constants ─────────────────────────────────────────────────────────────────
 NUM_FEATS = [
     "MinTemp","MaxTemp","Rainfall","WindGustSpeed",
     "WindSpeed9am","WindSpeed3pm","Humidity9am","Humidity3pm",
@@ -225,7 +112,7 @@ def get_season(m):
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("### Context")
+    st.markdown("### 📍 Location & Date")
     st.divider()
     location       = st.selectbox("Weather station", LOCATIONS,
                                   index=LOCATIONS.index("Sydney"))
@@ -247,12 +134,12 @@ with st.sidebar:
 st.markdown(f"## 🌧 Rain Predictor — {location}")
 st.caption(
     f"{MONTH_NAMES[month]} · {SEASON_ICONS[season]} {season} · "
-    f"Rain today: {rain_today_str} · Threshold: {threshold:.3f}"
+    f"Rain today: {rain_today_str}"
 )
 st.write("")
 
 # ══════════════════════════════════════════════════════════════════════════════
-# ROW 1 — Cards A & B
+# ROW 1 — Temperature | Humidity & Pressure
 # ══════════════════════════════════════════════════════════════════════════════
 col_a, col_b = st.columns(2, gap="medium")
 
@@ -283,7 +170,7 @@ with col_b:
     pressure_3pm = st.slider("Pressure 3 pm (hPa)", 980.0, 1040.0, 1015.0, 0.5)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# ROW 2 — Cards C & D
+# ROW 2 — Wind | Cloud & Rainfall
 # ══════════════════════════════════════════════════════════════════════════════
 col_c, col_d = st.columns(2, gap="medium")
 
@@ -316,80 +203,28 @@ with col_d:
     sunshine    = st.slider("Sunshine (hrs)",             0.0, 14.0, 7.0, 0.5)
     rainfall    = st.slider("Rainfall today (mm)",        0.0, 100.0, 1.0, 0.5)
 
-# ══════════════════════════════════════════════════════════════════════════════
-# ENGINEERED FEATURES — centred compact insight panel
-# ══════════════════════════════════════════════════════════════════════════════
+# ── Compute engineered features (always, so they're ready for the table) ─────
 temp_range      = round(max_temp - min_temp, 1)
 pressure_drop   = round(pressure_9am - pressure_3pm, 1)
 humidity_rise   = round(humidity_3pm - humidity_9am, 1)
 cloud_avg       = round((cloud_9am + cloud_3pm) / 2, 1)
 humidity_xcloud = round(humidity_3pm * cloud_3pm, 1)
 
-pd_sign   = "+" if pressure_drop  >= 0 else ""
-hr_sign   = "+" if humidity_rise  >= 0 else ""
+pd_sign = "+" if pressure_drop >= 0 else ""
+hr_sign = "+" if humidity_rise >= 0 else ""
 
-st.write("")
-
-# Centre via 3-column trick: empty | panel | empty
-_, centre_col, _ = st.columns([0.5, 9, 0.5])
-with centre_col:
-    st.markdown(f"""
-<div class="insight-panel">
-  <p class="insight-label">Engineered features — derived from your inputs</p>
-  <div class="chips">
-
-    <div class="chip c-blue">
-      <div class="chip-label">Temp range</div>
-      <div class="chip-val">{temp_range} °C</div>
-      <div class="chip-hint">{"Wide — stable dry air" if temp_range >= 10 else "Narrow — overcast day"}</div>
-    </div>
-
-    <div class="chip c-teal">
-      <div class="chip-label">Pressure drop</div>
-      <div class="chip-val">{pd_sign}{pressure_drop} hPa</div>
-      <div class="chip-hint">{"Falling — frontal risk" if pressure_drop >= 2 else "Stable pressure"}</div>
-    </div>
-
-    <div class="chip c-purple">
-      <div class="chip-label">Humidity rise</div>
-      <div class="chip-val">{hr_sign}{humidity_rise} %</div>
-      <div class="chip-hint">{"Rising — moisture loading" if humidity_rise >= 5 else "Stable humidity"}</div>
-    </div>
-
-    <div class="chip c-amber">
-      <div class="chip-label">Cloud avg</div>
-      <div class="chip-val">{cloud_avg} oktas</div>
-      <div class="chip-hint">{"Heavy cover" if cloud_avg >= 5 else "Partial cover"}</div>
-    </div>
-
-    <div class="chip c-pink">
-      <div class="chip-label">Humidity × cloud</div>
-      <div class="chip-val">{humidity_xcloud}</div>
-      <div class="chip-hint">{"Strong combined signal" if humidity_xcloud >= 250 else "Weak combined signal"}</div>
-    </div>
-
-    <div class="chip c-gray">
-      <div class="chip-label">Season</div>
-      <div class="chip-val">{season}</div>
-      <div class="chip-hint">{MONTH_NAMES[month]}</div>
-    </div>
-
-  </div>
-</div>
-""", unsafe_allow_html=True)
-
-# ══════════════════════════════════════════════════════════════════════════════
-# PREDICT BUTTON
-# ══════════════════════════════════════════════════════════════════════════════
+# ── Predict button ────────────────────────────────────────────────────────────
 st.write("")
 _, btn_col, _ = st.columns([1, 2, 1])
 with btn_col:
-    predict = st.button("Predict Rain Tomorrow", type="primary", use_container_width=True)
+    predict = st.button("🔮  Predict Rain Tomorrow", type="primary", use_container_width=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# RESULT — centred panel
+# RESULT — shown only after clicking Predict
+# Left col: engineered features table  |  Right col: prediction result
 # ══════════════════════════════════════════════════════════════════════════════
 if predict:
+    # ── Run prediction ────────────────────────────────────────────────────────
     input_data = {
         "MinTemp": min_temp, "MaxTemp": max_temp, "Rainfall": rainfall,
         "WindGustSpeed": wind_gust_speed, "WindSpeed9am": wind_speed_9am,
@@ -417,15 +252,47 @@ if predict:
 
     if   proba < 0.30: interp = "Low chance of rain"
     elif proba < 0.45: interp = "Slight chance of rain"
-    elif proba < 0.60: interp = "Borderline / mixed signal"
+    elif proba < 0.60: interp = "Borderline — mixed signal"
     elif proba < 0.75: interp = "Moderate chance of rain"
     else:              interp = "Strong chance of rain"
 
-    _, res_col, _ = st.columns([0.5, 9, 0.5])
-    with res_col:
+    st.write("")
+    left_col, right_col = st.columns(2, gap="large")
+
+    # ── Left: engineered features as a native Streamlit table ────────────────
+    with left_col:
+        st.markdown("##### 🔬 Engineered Features")
+        st.caption("Derived from your inputs — passed directly to the model")
+
+        eng_df = pd.DataFrame({
+            "Feature":     ["Temp Range", "Pressure Drop", "Humidity Rise", "Cloud Avg", "Humidity × Cloud", "Season"],
+            "Value":       [
+                f"{temp_range} °C",
+                f"{pd_sign}{pressure_drop} hPa",
+                f"{hr_sign}{humidity_rise} %",
+                f"{cloud_avg} oktas",
+                f"{humidity_xcloud}",
+                f"{SEASON_ICONS[season]} {season}",
+            ],
+            "Signal":      [
+                "Wide → stable air" if temp_range >= 10 else "Narrow → overcast",
+                "Falling → frontal risk" if pressure_drop >= 2 else "Stable",
+                "Rising → moisture loading" if humidity_rise >= 5 else "Stable",
+                "Heavy cover" if cloud_avg >= 5 else "Partial cover",
+                "Strong combined signal" if humidity_xcloud >= 250 else "Weak combined signal",
+                MONTH_NAMES[month],
+            ],
+        })
+        st.dataframe(eng_df, use_container_width=True, hide_index=True)
+
+    # ── Right: prediction result panel ───────────────────────────────────────
+    with right_col:
+        st.markdown("##### 📊 Prediction Result")
+        st.caption(f"Station: {location} · {MONTH_NAMES[month]} · Rain today: {rain_today_str}")
+
         st.markdown(f"""
-<div class="result-panel" style="border-color: {accent_color}44;">
-  <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+<div class="result-panel" style="border-color: {accent_color}55;">
+  <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:10px;">
     <div>
       <div class="result-verdict">{verdict_icon} {verdict}</div>
       <div class="result-interp">{interp}</div>
@@ -438,18 +305,21 @@ if predict:
   </div>
 
   <div>
-    <span class="tag">Threshold: {threshold:.3f}</span>
-    <span class="tag">{SEASON_ICONS[season]} {season} · {MONTH_NAMES[month]}</span>
+    <span class="tag">Threshold {threshold:.3f}</span>
+    <span class="tag">{SEASON_ICONS[season]} {season}</span>
     <span class="tag">Rain today: {rain_today_str}</span>
-    <span class="tag">Station: {location}</span>
   </div>
 </div>
 """, unsafe_allow_html=True)
+
+        # Native metric for at-a-glance probability
+        st.metric(label="Rain probability", value=f"{pct}%",
+                  delta=f"{pct - threshold*100:+.1f}% vs threshold",
+                  delta_color="inverse")
 
 # ── Footer ────────────────────────────────────────────────────────────────────
 st.write("")
 st.divider()
 st.caption(
-    "COM763 Advanced Machine Learning  ·  Rain in Australia Dataset  ·  "
-    "Bureau of Meteorology  ·  Streamlit Community Cloud"
+    "Rain in Australia Dataset · Bureau of Meteorology · Streamlit Community Cloud"
 )
