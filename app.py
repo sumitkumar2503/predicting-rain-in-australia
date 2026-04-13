@@ -31,13 +31,13 @@ st.markdown("""
     border-bottom: 1px solid rgba(128,128,128,0.12);
 }
 .card-icon {
-    width: 28px; height: 28px;
+    width: 30px; height: 30px; ######
     border-radius: 7px;
     display: flex; align-items: center; justify-content: center;
     font-size: 14px; flex-shrink: 0;
 }
 .card-title {
-    font-size: 11px; font-weight: 700;
+    font-size: 13px; font-weight: 700; #####
     letter-spacing: 0.07em; text-transform: uppercase; opacity: 0.5; margin: 0;
 }
 .icon-blue   { background: #E6F1FB; }
@@ -112,7 +112,7 @@ def get_season(m):
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("### 📍 Location & Date")
+    st.markdown("### Location & Date") ####
     st.divider()
     location       = st.selectbox("Weather station", LOCATIONS,
                                   index=LOCATIONS.index("Sydney"))
@@ -131,9 +131,9 @@ with st.sidebar:
     )
 
 # ── Page header ───────────────────────────────────────────────────────────────
-st.markdown(f"## 🌧 Rain Predictor — {location}")
+st.markdown(f"## 🌧 Rain in Australia — Next-Day Predictor")
 st.caption(
-    f"{MONTH_NAMES[month]} · {SEASON_ICONS[season]} {season} · "
+    f"**{location}** · {MONTH_NAMES[month]} · {SEASON_ICONS[season]} {season} · " ####
     f"Rain today: {rain_today_str}"
 )
 st.write("")
