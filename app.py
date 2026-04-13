@@ -66,7 +66,7 @@ st.markdown("""
 # ── Load model bundle ─────────────────────────────────────────────────────────
 @st.cache_resource
 def load_bundle():
-    return joblib.load("rain_model_bundle.pkl")
+    return joblib.load("rain_model.pkl")
 
 bundle    = load_bundle()
 pre_fit   = bundle["preprocessor"]
