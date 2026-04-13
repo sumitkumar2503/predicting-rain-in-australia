@@ -40,6 +40,7 @@ st.markdown("""
 .card-title {
     font-size: 15px; font-weight: 700; #####
     letter-spacing: 0.07em; text-transform: uppercase; opacity: 0.5; margin: 0;
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
 }
 .icon-blue   { background: #E6F1FB; }
 .icon-teal   { background: #E1F5EE; }
@@ -154,7 +155,6 @@ with col_a:
     st.markdown("""
     <div class="card">
       <div class="card-header">
-        <div class="card-icon icon-blue">🌡</div>
         <span class="card-title">🌡Temperature</span>
       </div>
     </div>""", unsafe_allow_html=True)
