@@ -288,7 +288,9 @@ if predict:
     # ── Right: prediction result panel ───────────────────────────────────────
     with right_col:
         st.markdown("##### 📊 Prediction Result")
-        st.caption(f"Station: {location} · {MONTH_NAMES[month]} · Rain today: {rain_today_str}")
+        st.caption(f"Station: {location}     Month: {MONTH_NAMES[month]}     Rain today: {rain_today_str}"
+                  
+                  )
 
         st.markdown(f"""
 <div class="result-panel" style="border-color: {accent_color}55;">
@@ -307,7 +309,7 @@ if predict:
   <div>
     <span class="tag">Threshold {threshold:.3f}</span>
     <span class="tag">{SEASON_ICONS[season]} {season}</span>
-    <span class="tag">Rain today: {rain_today_str}</span>
+    # <span class="tag">Rain today: {rain_today_str}</span>
   </div>
 </div>
 """, unsafe_allow_html=True)
