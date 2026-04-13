@@ -35,6 +35,7 @@ st.markdown("""
     border-radius: 7px;
     display: flex; align-items: center; justify-content: center;
     font-size: 14px; flex-shrink: 0;
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
 }
 .card-title {
     font-size: 15px; font-weight: 700; #####
