@@ -132,9 +132,15 @@ with st.sidebar:
 
 # ── Page header ───────────────────────────────────────────────────────────────
 st.markdown(f"## 🌧 Rain in Australia — Next-Day Predictor")
+# st.caption(
+#     f"**{location}** · {MONTH_NAMES[month]} · {SEASON_ICONS[season]} {season} · " ####
+#     f"Rain today: {rain_today_str}"
+# )
 st.caption(
-    f"**{location}** · {MONTH_NAMES[month]} · {SEASON_ICONS[season]} {season} · " ####
-    f"Rain today: {rain_today_str}"
+    f"Station: {location} &nbsp;&nbsp;&nbsp;&nbsp; "
+    f"Month: {MONTH_NAMES[month]} &nbsp;&nbsp;&nbsp;&nbsp; "
+    f"Rain today: {rain_today_str} &nbsp;&nbsp;&nbsp;&nbsp;"
+    f"{SEASON_ICONS[season]} {season}"
 )
 st.write("")
 
@@ -311,7 +317,6 @@ if predict:
   <div>
     <span class="tag">Threshold {threshold:.3f}</span>
     <span class="tag">{SEASON_ICONS[season]} {season}</span>
-    # <span class="tag">Rain today: {rain_today_str}</span>
   </div>
 </div>
 """, unsafe_allow_html=True)
