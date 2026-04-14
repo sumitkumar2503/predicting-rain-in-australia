@@ -155,7 +155,7 @@ with col_a:
     st.markdown("""
     <div class="card">
       <div class="card-header">
-        <span class="card-title">🌡Temperature</span>
+        <span class="card-title">🌡 Temperature</span>
       </div>
     </div>""", unsafe_allow_html=True)
     min_temp = st.slider("Min temp (°C)",      -10.0, 35.0,  12.0, 0.5)
@@ -167,8 +167,7 @@ with col_b:
     st.markdown("""
     <div class="card">
       <div class="card-header">
-        <div class="card-icon icon-teal">💧</div>
-        <span class="card-title">💧Humidity &amp; Pressure</span>
+        <span class="card-title">💧 Humidity &amp; Pressure</span>
       </div>
     </div>""", unsafe_allow_html=True)
     humidity_9am = st.slider("Humidity 9 am (%)",       0, 100, 68)
@@ -185,7 +184,6 @@ with col_c:
     st.markdown("""
     <div class="card">
       <div class="card-header">
-        <div class="card-icon icon-amber">💨</div>
         <span class="card-title">💨 Wind</span>
       </div>
     </div>""", unsafe_allow_html=True)
@@ -200,7 +198,6 @@ with col_d:
     st.markdown("""
     <div class="card">
       <div class="card-header">
-        <div class="card-icon icon-purple">☁️</div>
         <span class="card-title">☁️ Cloud &amp; Rainfall</span>
       </div>
     </div>""", unsafe_allow_html=True)
